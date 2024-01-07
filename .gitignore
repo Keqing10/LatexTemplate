@@ -1,0 +1,5 @@
+*.aux
+*.log
+*.gz
+main.toc
+main.out
