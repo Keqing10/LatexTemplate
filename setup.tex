@@ -1,0 +1,77 @@
+% !TeX root = ./main.tex
+
+% 定理类环境宏包
+\usepackage{amsthm}
+% 也可以使用 ntheorem
+% \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+
+% 表格加脚注
+\usepackage{threeparttable}
+
+% 表格中支持跨行
+\usepackage{multirow}
+
+% 固定宽度的表格。
+% \usepackage{tabularx}
+
+% 跨页表格
+\usepackage{longtable}
+
+% 算法
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% 量和单位
+\usepackage{siunitx}
+
+% 参考文献使用 BibTeX + natbib 宏包
+% 顺序编码制
+\usepackage[sort]{natbib}
+\bibliographystyle{thuthesis-numeric}
+
+% 著者-出版年制
+% \usepackage{natbib}
+% \bibliographystyle{thuthesis-author-year}
+
+% 本科生参考文献的著录格式
+% \usepackage[sort]{natbib}
+% \bibliographystyle{thuthesis-bachelor}
+
+% 参考文献使用 BibLaTeX 宏包
+% \usepackage[style=thuthesis-numeric]{biblatex}
+% \usepackage[style=thuthesis-author-year]{biblatex}
+% \usepackage[style=apa]{biblatex}
+% \usepackage[style=mla-new]{biblatex}
+% 声明 BibLaTeX 的数据库
+% \addbibresource{ref/refs.bib}
+
+% 数学命令
+\makeatletter
+\newcommand\dif{%  % 微分符号
+  \mathop{}\!%
+  \ifthu@math@style@TeX
+    d%
+  \else
+    \mathrm{d}%
+  \fi
+}
+\makeatother
+
+% hyperref 宏包在最后调用
+\usepackage{hyperref}
+
+% 以下是自定义部分
+\usepackage{ctex,amsmath,graphicx,float,booktabs,amsfonts,mathrsfs,amssymb,caption,xcolor,listings,fontspec,multirow,unicode-math,geometry}
+\geometry{left=2.54cm,right=2.54cm,top=3.18cm,bottom=3.18cm}
+
+\newcommand{\md}{\mathrm{d}}  % 微分算符d
+\newcommand{\me}{\mathrm{e}}  % 自然常数e
+\newcommand{\mi}{\mathrm{i}}  % 虚数单位i
+\newcommand{\mdl}{\updelta}  % 变分符号delta
+\newcommand{\mpi}{\uppi}  % 圆周率pi
+
+% // TODO 取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+\special{dvipdfmx:config z 0}
+
+% 定义所有的图片文件在 figures 子目录下
+\graphicspath{{figures/}}

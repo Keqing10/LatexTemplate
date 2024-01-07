@@ -1,0 +1,126 @@
+%插入三线表格
+\begin{table}[htbp]
+    \caption{标题}
+    \centering
+    \begin{tabular}{c c c c}
+    \toprule
+    1 & 2 & 3 & 4 \\
+    \midrule
+    a & b & c & d \\
+    A & B & C & D \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+————————————————————
+%插入表格
+\begin{table}[htbp]
+    \caption{标题}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+    数字 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\ \hline
+    数字 & 2 & 2 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\ \hline
+    数字 & 3 & 3 & 3 & 1 & 1 & 1 & 1 & 1 & 1 \\ \hline
+    数字 & 4 & 4 & 4 & 4 & 1 & 1 & 1 & 1 & 1 \\ \hline
+    \end{tabular}
+\end{table}
+————————————————————
+%插入图片
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=60mm]{路径/文件名}
+    \caption{标题}
+\end{figure}
+————————————————————
+%插入两个并排的图片
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=50mm]{图片1名}
+    \caption{标题1}
+    \end{minipage}
+    \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=50mm]{图片2名}
+    \caption{标题2}
+    \end{minipage}
+\end{figure}
+%\caption*{}  不使用编号
+————————————————————
+%引用
+\begin{quote}
+	内容（首行不缩进）
+\end{quote}
+\begin{quotatin}
+	内容（首行缩进）
+\end{quotation}
+\begin{verse}
+	诗歌引用（悬挂缩进）
+\end{verse}
+————————————————————
+%列表
+\begin{itemize}
+  \item ……（无序列表）
+\end{itemize}
+\begin{enumerate}
+  \item ……（自动编号列表）
+\end{enumerate}
+\begin{description}
+  \item[描述语] ……（描述列表）
+\end{description}
+————————————————————
+%多行公式
+\begin{align or align*}
+  ***  &= ***\\
+       &= ***	只需用“&”指明对齐位置；使用“*”公式后面没有编号
+\end{align or align*}
+————————————————————
+%注
+\noindent  取消新段落前空格
+\boldsymbol{}  数学环境下的粗体
+\mathbb{}  数学环境下的空心粗体
+\mathscr{}  数学环境下的花体
+\phantom{}  虚位命令
+*^{\circ}  角度单位度
+————————————————————
+%英文标点符号
+-连字符 --数字起止符 ---破折号
+\ldots 英文省略号
+`` '' & `' 英文引号
+————————————————————
+%插入代码
+%导言区
+\setmonofont[Mapping={}]{Consolas}
+\setCJKmonofont{新宋体}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{ %
+numbers=left,
+numberstyle=\tiny,
+backgroundcolor=\color{white},   % choose the background color
+basicstyle=\footnotesize\ttfamily,        % size of fonts used for the code
+columns=fullflexible,
+breaklines=true,                 % automatic line breaking only at whitespace
+captionpos=b,                    % sets the caption-position to bottom
+tabsize=4,
+commentstyle=\color{mygreen},    % comment style
+escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+keywordstyle=\color{blue},       % keyword style
+stringstyle=\color{mymauve}\ttfamily,     % string literal style
+frame=single,
+rulesepcolor=\color{red!20!green!20!blue!20},
+% identifierstyle=\color{red},
+language=c++,
+}
+%代码区
+\begin{lstlisting}
+    
+\end{lstlisting}
+————————————————————
+%解决图片/表格过宽的问题
+%\usepackge{multirow}
+\resizebox{\textwidth}{!}{
+    %图片/表格内容
+}
