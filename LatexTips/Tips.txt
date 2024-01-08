@@ -124,3 +124,16 @@ language=c++,
 \resizebox{\textwidth}{!}{
     %图片/表格内容
 }
+————————————————————
+多栏公式对齐的写法
+\begin{align*}
+  &(1) \frac15\me^{5t}+C  
+  &&(2) -\frac{(3-2x)^4}{8}+C 
+  &&(3) -\frac12\ln|1-2x|+C  \\
+  &(4) -\frac12(2-3x)^{\frac23}+C 
+  &&(5) -\frac{\cos ax}{a}-b\me^{\frac{x}{b}}+C 
+  &&(6) -2\cos\sqrt{t}+C  \\
+  &(7)-\frac12\me^{-x^2}+C 
+  &&(8) \frac12 \sin(x^2)+C 
+  &&(9) -\frac{\sqrt{2-3x^2}}{3}+C
+\end{align*}
