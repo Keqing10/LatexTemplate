@@ -4,6 +4,16 @@
 \usepackage{amsthm}
 % 也可以使用 ntheorem
 % \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\newtheorem{theorem}{\indent 定理}[section]
+\newtheorem{lemma}[theorem]{\indent 引理}
+\newtheorem{proposition}[theorem]{\indent 命题}
+\newtheorem{corollary}[theorem]{\indent 推论}
+\newtheorem{definition}{\indent 定义}[section]
+\newtheorem{example}{\indent 例}[section]
+\newtheorem{remark}{\indent 注}[section]
+\newenvironment{solution}{\begin{proof}[\indent\textbf{解}]}{\end{proof}}
+\renewcommand{\proofname}{\indent\textbf{证明}}
+% 在windows环境下textbf是黑体，Linux下是加粗宋体，可替换为textsf。
 
 % 表格加脚注
 \usepackage{threeparttable}
