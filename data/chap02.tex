@@ -1,157 +1,40 @@
 % !TeX root = ../main.tex
 
-\chapter{图表示例}
+\chapter{字体、符号和排版}
 
-\section{插图}
+\section{文本字体}
 
-$$\int_a^b\!\alpha\beta\pi\delta\mathrm{e}^x\,\mathrm{d}x \Delta$$
+标题字体、\verb|\textbf{}|和\verb|\textsf{}|在Windows和Linux环境下表现不同。本文档默认在WSL环境编译。区别如表~\ref{tab-fonts-diff}~所示。
 
-$$\int_a^b\!\upalpha\upbeta\mpi\mdl\me^x\,\md x \upDelta$$
-$$\int_a^b e^x dx$$
-\[\cos x+y\]
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.5\linewidth]{264498559_cover.png}
-    \caption{Enter Caption}
-    \label{fig:enter-label}
-\end{figure}
-
-
-\begin{figure}
+\begin{table}[htbp]
   \centering
-  \includegraphics[width=0.5\linewidth]{example-image-a.pdf}
-  \caption*{国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。}
-  \caption{示例图片标题}
-  \label{fig:example}
-\end{figure}
-
-\begin{wrapfigure}
-  [7]{r}{80mm}  % 竖列7行，靠右排，宽度80mm
-  \centering
-  \includegraphics[width=80mm]{jishu-lianxi.png}
-  \caption{}
-  \label{fic-triangle}
-\end{wrapfigure}
-如图~\ref{fic-triangle}~所示，有一个边长为$2b$的正三角形，从中挖去一个倒放的正三角形，重复这个步骤，被挖去的面积之和形成一个无穷级数。\\
-（a）求这个无穷级数；\\
-（b）求这个级数和；\\
-（c）是否原来三角形中的每个点都被挖去了？解释为什么。
-
-\begin{lstlisting}
-  \begin{wrapfigure}
-    [行数]{位置}{超出长度}{宽度}<图形>%注意，行数两边是方括号，不是花括号！
-  \end{wrapfigure}
-\end{lstlisting}
-
-\section{表格}
-
-表应具有自明性。为使表格简洁易读，尽可能采用三线表，如表~\ref{tab:three-line}。
-三条线可以使用  宏包提供的命令生成。
-
-\begin{table}
-  \centering
-  \caption{三线表示例}
-  \begin{tabular}{ll}
+  \caption{两种系统下的字体区别}
+    \begin{tabular}{ccc}
     \toprule
-    文件名          & 描述                         \\
+          & Windows & Linux \\
     \midrule
-    thuthesis.dtx   & 模板的源文件，包括文档和注释 \\
-    thuthesis.cls   & 模板文件                     \\
-    thuthesis-*.bst & BibTeX 参考文献表样式文件    \\
+    标题默认字体 & 黑体    & 宋体 \\
+    \verb|\textsf{}| & 较大的等线字体 & 黑体 \\
+    \verb|\textbf{}| & 黑体    & 宋体加粗 \\
     \bottomrule
-  \end{tabular}
-  \label{tab:three-line}
-\end{table}
+    \end{tabular}%
+  \label{tab-fonts-diff}%
+\end{table}%
 
-表格如果有附注，尤其是需要在表格中进行标注时，可以使用 宏包。
-研究生要求使用英文小写字母 a、b、c……顺序编号，本科生使用圈码 ①、②、③……编号。
+一般情况下强调字体使用\verb|\testbf{}|即可，在Linux环境下如果需要黑体需换成\verb|\textsf{}|。
 
-\begin{table}
-  \centering
-  \begin{threeparttable}[c]
-    \caption{带附注的表格示例}
-    \label{tab:three-part-table}
-    \begin{tabular}{ll}
-      \toprule
-      文件名                 & 描述                         \\
-      \midrule
-      thuthesis.dtx\tnote{a} & 模板的源文件，包括文档和注释 \\
-      thuthesis.cls\tnote{b} & 模板文件                     \\
-      thuthesis-*.bst        & BibTeX 参考文献表样式文件    \\
-      \bottomrule
-    \end{tabular}
-    \begin{tablenotes}
-      \item [a] 可以通过 xelatex 编译生成模板的使用说明文档；
-        使用 xetex 编译 时则会从  中去除掉文档和注释，得到精简的  文件。
-      \item [b] 更新模板时，一定要记得编译生成  文件，否则编译论文时载入的依然是旧版的模板。
-    \end{tablenotes}
-  \end{threeparttable}
-\end{table}
+\section{数学}
 
-如某个表需要转页接排，可以使用 宏包，需要在随后的各页上重复表的编号。
-编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
+\subsection{公式环境}
+数学公式环境可以使用：
+\begin{itemize}
+  \item \verb|align|：多行公式，默认居中，多列使用\&对齐。
+  \item \verb|flalign|：多行公式，默认左对齐，多列使用\&对齐。
+  \item \verb|gather|：多行公式，居中，无法多列及使用\&。
+  \item \verb|equation|：单行公式。
+\end{itemize}
 
-\begin{longtable}{cccc}
-    \caption{跨页长表格的表题}
-    \label{tab:longtable} \\
-    \toprule
-    表头 1 & 表头 2 & 表头 3 & 表头 4 \\
-    \midrule
-  \endfirsthead
-    \caption*{续表~\thetable\quad 跨页长表格的表题} \\
-    \toprule
-    表头 1 & 表头 2 & 表头 3 & 表头 4 \\
-    \midrule
-  \endhead
-    \bottomrule
-  \endfoot
-  Row 1  & & & \\
-  Row 2  & & & \\
-  Row 3  & & & \\
-  Row 4  & & & \\
-  Row 5  & & & \\
-  Row 6  & & & \\
-  Row 7  & & & \\
-  Row 8  & & & \\
-  Row 9  & & & \\
-  Row 10 & & & \\
-\end{longtable}
-
-
-
-\section{算法}
-
-算法环境可以使用 或者宏包。
-
-\renewcommand{\algorithmicrequire}{\textbf{输入：}\unskip}
-\renewcommand{\algorithmicensure}{\textbf{输出：}\unskip}
-
-\begin{algorithm}
-  \caption{Calculate $y = x^n$}
-  \label{alg1}
-  \small
-  \begin{algorithmic}
-    \REQUIRE $n \geq 0$
-    \ENSURE $y = x^n$
-
-    \STATE $y \leftarrow 1$
-    \STATE $X \leftarrow x$
-    \STATE $N \leftarrow n$
-
-    \WHILE{$N \neq 0$}
-      \IF{$N$ is even}
-        \STATE $X \leftarrow X \times X$
-        \STATE $N \leftarrow N / 2$
-      \ELSE[$N$ is odd]
-        \STATE $y \leftarrow y \times X$
-        \STATE $N \leftarrow N - 1$
-      \ENDIF
-    \ENDWHILE
-  \end{algorithmic}
-\end{algorithm}
-
-\section{多栏公式}
+下面是一个多栏公式的例子，使用\verb|flalign*|环境，注意第一列前用\&，其他列前使用\&\&，换行前再使用一次\&。
 \begin{flalign*}
   &(1) \frac15\me^{5t}+C  
   &&(2) -\frac{(3-2x)^4}{8}+C 
@@ -175,20 +58,113 @@ $$\int_a^b e^x dx$$
   &(9) -\frac{\sqrt{2-3x^2}}{3}+C
 \end{flalign*}
 
+在模板中有\verb|\allowdisplaybreaks[4]|允许较长的公式在中间换页。
 
-\begin{proof}
-  这是一个证明。
-\end{proof}
+\subsection{字体}
 
-\begin{solution}
-  这是一个解。
-\end{solution}
+正文默认使用正体，数学环境默认使用斜体。
+
+使用正体的情况：物理量的单位，单词缩写表示的下（上）标，一些常数（$\mpi,\me,\mi$），微分算符$\md$，特殊函数（$\sin,\ln$）。向量和矩阵使用粗斜体。
+
+希腊字母的正体，使用\verb|\unicode-math|宏包（\verb|upgreek|宏包会改变字体），希腊字母加粗使用\verb|\symbf{}|，\verb|\symbfit{}|或\verb|symbfup{}|，效果如下：
+\begin{gather*}
+  \alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \xi o \pi \varpi \rho \varrho \sigma \varsigma \tau \upsilon \phi \varphi \chi \psi \omega
+  A B \Gamma \varGamma \Delta \varDelta E Z H \Theta \varTheta I K \Lambda \varLambda M N \Xi \varXi O \Pi \varPi P \Sigma \varSigma T \Upsilon \varUpsilon \Phi \varPhi X \Psi \varPsi \Omega \varOmega 
+\\
+  (\text{up-})\upalpha \upbeta \upgamma \updelta \upepsilon  \upzeta \upeta \uptheta  \upiota \upkappa \uplambda \upmu \upnu \upxi \mathrm{o} \uppi  \uprho \upvarrho \upsigma  \uptau \upupsilon \upphi  \upchi \uppsi \upomega
+  \upGamma     \upTheta   \upLambda  \upXi  \upPi   \upSigma  \upUpsilon  \upPhi   \upPsi  \upOmega  
+\\
+  (\mathrm{bfit})\symbfit{  \alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \xi o \pi \varpi \rho \varrho \sigma \varsigma \tau \upsilon \phi \varphi \chi \psi \omega
+  A B \Gamma  \Delta  E Z H \Theta  I K \Lambda  M N \Xi  O \Pi  P \Sigma  T \Upsilon  \Phi  X \Psi  \Omega  }
+\\
+  (\mathrm{bf})\symbf{ \alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \xi o \pi \varpi \rho \varrho \sigma \varsigma \tau \upsilon \phi \varphi \chi \psi \omega
+  A B \Gamma  \Delta  E Z H \Theta  I K \Lambda  M N \Xi  O \Pi  P \Sigma  T \Upsilon  \Phi  X \Psi  \Omega}
+\\
+  (\mathrm{bfup})\symbfup{ \alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \xi o \pi \varpi \rho \varrho \sigma \varsigma \tau \upsilon \phi \varphi \chi \psi \omega
+  A B \Gamma  \Delta  E Z H \Theta  I K \Lambda  M N \Xi  O \Pi  P \Sigma  T \Upsilon  \Phi  X \Psi  \Omega}
+\end{gather*}
+小结：对小写希腊字母，\verb|up|前缀正体，\verb|\symbf{}|加粗斜体同\verb|\symbfit{}|，\verb|symbfup{}|加粗正体；对大写希腊字母，\verb|up|前缀正体同默认，\verb|var|前缀斜体，\verb|\symbf{}|加粗正体同\verb|\symbfup{}|，\verb|\symbfit{}|加粗斜体。
+
+英文字母：
+\begin{gather*}
+  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+  \\
+  (\mathrm{rm})\mathrm{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
+  \\
+  (\mathrm{bf})\mathbf{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
+  \\
+  (\mathrm{bf})\symbf{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
+  \\
+  (\mathrm{bfit})\symbfit{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
+  \\
+  (\mathrm{bb})\mathbb{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
+  \\
+  (\mathrm{cal})\mathcal{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
+\end{gather*}
+
+对于常用正体的字母，在配置文件中增加快捷键：
+\begin{align*}
+  \me^{\mi\mpi}+1=0 \qquad
+  \mdd{y}{x}=\frac{\md }{\md x}f(x) \qquad
+  \mdl x
+\end{align*}
+
+积分式的表示：
+\begin{equation*}
+  \int_a^b\! f(x)\,\md x = \left.F(x)\right|_a^b=F(x)\big|_a^b=F(x)\Big|_a^b=F(x)\bigg|_a^b
+\end{equation*}
+
+复数实部和虚部的表示：$z=a+b\mi,\Re(z)=a,\Im(z)=b$。
+使用正体字母可以使用自定义命令\verb|\re|和\verb|\im|：$\re{z}=a,\im{z}=b$。
+
+
+\subsection{其他符号}
+
+文本中的分式$\myfrac{1}{2}$，虚位\phantom{字}命令；
+$\ell \quad \nabla \quad 30^{\circ} $。
+
+\subsection{定理环境}
 
 \begin{theorem}[定理名字]
   这是一个定理。
 \end{theorem}
 
-\begin{definition}
-  [定义名字]
+\begin{definition}[定义名字]
   这是一个定义。
 \end{definition}
+
+\begin{proof}
+  这是一个证明。
+\end{proof}
+
+\begin{example}
+  这是一个例子。
+\end{example}
+
+\begin{solution}
+  这是一个解。
+\end{solution}
+
+
+
+\section{排版}
+
+\noindent  取消新段落前空格
+
+加入一个水平线：
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\subsubsection*{空格}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=85mm]{different-space.jpg}
+  \caption{不同空格及其宽度}
+  \label{fig-diff-space}
+\end{figure}
+
+
+使用\verb|a~b|:a~b不可分断空格，在此处不会换行。
+
+使用\phantom{text}（同高宽）或\vphantom{text}（宽为0）或\hphantom{text}（高为0）产生指定占位字符长度的空白。

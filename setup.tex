@@ -1,20 +1,5 @@
 % !TeX root = ./main.tex
 
-% 定理类环境宏包
-\usepackage{amsthm}
-% 也可以使用 ntheorem
-% \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
-\newtheorem{theorem}{\indent 定理}[section]
-\newtheorem{lemma}[theorem]{\indent 引理}
-\newtheorem{proposition}[theorem]{\indent 命题}
-\newtheorem{corollary}[theorem]{\indent 推论}
-\newtheorem{definition}{\indent 定义}[section]
-\newtheorem{example}{\indent 例}[section]
-\newtheorem{remark}{\indent 注}[section]
-\newenvironment{solution}{\begin{proof}[\indent\textbf{解}]}{\end{proof}}
-\renewcommand{\proofname}{\indent\textbf{证明}}
-% 在windows环境下textbf是黑体，Linux下是加粗宋体，可替换为textsf。
-
 % 表格加脚注
 \usepackage{threeparttable}
 
@@ -70,25 +55,96 @@
 % hyperref 宏包在最后调用
 \usepackage{hyperref}
 
+
+% // TODO 取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+% \special{dvipdfmx:config z 0}
+
+
 % 以下是自定义部分
-\usepackage{ctex,amsmath,graphicx,float,booktabs,amsfonts,mathrsfs,amssymb,caption,xcolor,listings,fontspec,multirow,unicode-math,geometry}
+\usepackage{ctex}
+
+\usepackage{geometry}
 \geometry{left=2.54cm,right=2.54cm,top=3.18cm,bottom=3.18cm}
 
+% 字体设置
+\usepackage{fontspec}
+
+% 数学相关：
+\usepackage{amsmath,amssymb,amsfonts}
+
+% \usepackage{mathrsfs} % 提供数学花体\mathsrc{}，但在unicode-math作用下会被\mathcal{}覆盖
+
+% 修改被unicode-math影响的\mathbb{}命令
+\let\mathbbalt\mathbb
+\usepackage{unicode-math}
+\let\mathbb\mathbbalt  % 开启后使用衬线版本的原始\mathbb{}；关闭后使用无衬线版本的\mathbb{}，但是可以使用\mathbbalt{}输出衬线版本
+
+% 允许多行公式换页
+\allowdisplaybreaks[4]
+
+% 浮动体宏包，自动调整插入图表的位置[!htbp]
+\usepackage{float}
+
+% 控制题目/说明文字的样式
+\usepackage{caption}
+
+% 三线表
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+
+% 定义所有的图片文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+% 插入偏左或右的图片
+\usepackage{wrapfig}
+
+
+% 自定义命令
 \newcommand{\md}{\mathrm{d}}  % 微分算符d
 \newcommand{\me}{\mathrm{e}}  % 自然常数e
 \newcommand{\mi}{\mathrm{i}}  % 虚数单位i
 \newcommand{\mdl}{\updelta}  % 变分符号delta
 \newcommand{\mpi}{\uppi}  % 圆周率pi
 \newcommand{\mdd}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}} % 导数
+\newcommand{\re}[1]{\mathrm{Re}(#1)}  % 实部 Re
+\newcommand{\im}[1]{\mathrm{Im}(#1)}  % 虚部 Im
 
-% // TODO 取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
-\special{dvipdfmx:config z 0}
+\newcommand{\myfrac}[2]{\left.#1\middle/#2\right.}  % 行内分式，使用更大的斜线
 
-% 定义所有的图片文件在 figures 子目录下
-\graphicspath{{figures/}}
+% 定理类环境宏包
+\usepackage{amsthm}
+% 也可以使用 ntheorem
+% \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\newtheorem{theorem}{\indent 定理}[section]
+\newtheorem{lemma}[theorem]{\indent 引理}
+\newtheorem{proposition}[theorem]{\indent 命题}
+\newtheorem{corollary}[theorem]{\indent 推论}
+\newtheorem{definition}{\indent 定义}[section]
+\newtheorem{example}{\indent 例}[section]
+\newtheorem{remark}{\indent 注}[section]
+\newenvironment{solution}{\begin{proof}[\indent\textbf{解}]}{\end{proof}}
+\renewcommand{\proofname}{\indent\textbf{证明}}
+% 在windows环境下textbf是黑体，Linux下是加粗宋体，可替换为textsf。
 
-% 允许多行公式换页
-\allowdisplaybreaks[4]
+% 插入代码
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\lstset{
+  % language=c, % 设置语言，为空默认所有；需要在使用lstlisting环境时指定语言，否则无法识别关键字
+  basicstyle=\ttfamily, % 设置字体族
+  breaklines=true, % 自动换行
+  keywordstyle=\bfseries\color{NavyBlue}, % 设置关键字为粗体，颜色为 NavyBlue
+  morekeywords={}, % 设置更多的关键字，用逗号分隔
+  emph={self}, % 指定强调词，如果有多个，用逗号隔开
+  emphstyle=\bfseries\color{Rhodamine}, % 强调词样式设置
+  commentstyle=\itshape\color{black!50!white}, % 设置注释样式，斜体，浅灰色
+  stringstyle=\bfseries\color{PineGreen!90!black}, % 设置字符串样式
+  columns=flexible,
+  numbers=left, % 显示行号在左边
+  numbersep=2em, % 设置行号的具体位置
+  numberstyle=\footnotesize, % 缩小行号
+  frame=single, % 边框
+  framesep=1em % 设置代码与边框的距离
+}
 
-% 插入偏左或右的图片
-\usepackage{wrapfig}
