@@ -41,16 +41,16 @@
 % \addbibresource{ref/refs.bib}
 
 % 数学命令
-\makeatletter
-\newcommand\dif{%  % 微分符号
-  \mathop{}\!%
-  \ifthu@math@style@TeX
-    d%
-  \else
-    \mathrm{d}%
-  \fi
-}
-\makeatother
+% \makeatletter
+% \newcommand\dif{%  % 微分符号
+%   \mathop{}\!%
+%   \ifthu@math@style@TeX
+%     d%
+%   \else
+%     \mathrm{d}%
+%   \fi
+% }
+% \makeatother
 
 % hyperref 宏包在最后调用
 \usepackage{hyperref}
@@ -99,9 +99,13 @@
 % 插入偏左或右的图片
 \usepackage{wrapfig}
 
+% 使用直立的积分号
+\usepackage{cmupint}
+
 
 % 自定义命令
-\newcommand{\md}{\mathrm{d}}  % 微分算符d
+\newcommand{\md}{\mathrm{d}}  % 微分算符d，也可以使用\dif 
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \newcommand{\me}{\mathrm{e}}  % 自然常数e
 \newcommand{\mi}{\mathrm{i}}  % 虚数单位i
 \newcommand{\mdl}{\updelta}  % 变分符号delta
@@ -111,6 +115,21 @@
 \newcommand{\im}[1]{\mathrm{Im}(#1)}  % 虚部 Im
 
 \newcommand{\myfrac}[2]{\left.#1\middle/#2\right.}  % 行内分式，使用更大的斜线
+
+% 正体的偏微分符号partial
+\makeatletter
+\newcommand{\allmodesymb}[2]{\relax\ifmmode{\mathchoice
+{\mbox{\fontsize{\tf@size}{\tf@size}#1{#2}}}
+{\mbox{\fontsize{\tf@size}{\tf@size}#1{#2}}}
+{\mbox{\fontsize{\sf@size}{\sf@size}#1{#2}}}
+{\mbox{\fontsize{\ssf@size}{\ssf@size}#1{#2}}}}
+\else
+\mbox{#1{#2}}\fi}
+\makeatother
+\newcommand{\greeksym}[1]{\usefont{U}{psy}{m}{n}#1}
+\newcommand{\uppartial}{\allmodesymb{\greeksym}{\char"B6}} % partial符号
+\newcommand{\mpp}[2]{\frac{\uppartial #1}{\uppartial #2}} % 分数形式的偏导数
+
 
 % 定理类环境宏包
 \usepackage{amsthm}

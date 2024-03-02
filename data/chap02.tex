@@ -64,7 +64,7 @@
 
 正文默认使用正体，数学环境默认使用斜体。
 
-使用正体的情况：物理量的单位，单词缩写表示的下（上）标，一些常数（$\mpi,\me,\mi$），微分算符$\md$，特殊函数（$\sin,\ln$）。向量和矩阵使用粗斜体。
+使用正体的情况：物理量的单位，单词缩写表示的下（上）标，一些常数（$\mpi,\me,\mi$），微分算符（$\md$,$\mdl$），特殊函数（$\sin,\ln$）。向量和矩阵使用粗斜体。
 
 希腊字母的正体，使用\verb|\unicode-math|宏包（\verb|upgreek|宏包会改变字体），希腊字母加粗使用\verb|\symbf{}|，\verb|\symbfit{}|或\verb|symbfup{}|，效果如下：
 \begin{gather*}
@@ -72,7 +72,7 @@
   A B \Gamma \varGamma \Delta \varDelta E Z H \Theta \varTheta I K \Lambda \varLambda M N \Xi \varXi O \Pi \varPi P \Sigma \varSigma T \Upsilon \varUpsilon \Phi \varPhi X \Psi \varPsi \Omega \varOmega 
 \\
   (\text{up-})\upalpha \upbeta \upgamma \updelta \upepsilon  \upzeta \upeta \uptheta  \upiota \upkappa \uplambda \upmu \upnu \upxi \mathrm{o} \uppi  \uprho \upvarrho \upsigma  \uptau \upupsilon \upphi  \upchi \uppsi \upomega
-  \upGamma     \upTheta   \upLambda  \upXi  \upPi   \upSigma  \upUpsilon  \upPhi   \upPsi  \upOmega  
+  \upGamma  \upDelta   \upTheta   \upLambda  \upXi  \upPi   \upSigma  \upUpsilon  \upPhi   \upPsi  \upOmega  
 \\
   (\mathrm{bfit})\symbfit{  \alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \xi o \pi \varpi \rho \varrho \sigma \varsigma \tau \upsilon \phi \varphi \chi \psi \omega
   A B \Gamma  \Delta  E Z H \Theta  I K \Lambda  M N \Xi  O \Pi  P \Sigma  T \Upsilon  \Phi  X \Psi  \Omega  }
@@ -104,14 +104,14 @@
 
 对于常用正体的字母，在配置文件中增加快捷键：
 \begin{align*}
-  \me^{\mi\mpi}+1=0 \qquad
-  \mdd{y}{x}=\frac{\md }{\md x}f(x) \qquad
-  \mdl x
+  \me^{\mi\mpi}+1=0 \quad \dif x \quad 
+  \mdd{y}{x}=\frac{\md }{\md x}f(x) \quad
+  \mdl x \quad \uppartial x \quad \mpp{f}{x} =\mpp{}{x}f
 \end{align*}
 
 积分式的表示：
 \begin{equation*}
-  \int_a^b\! f(x)\,\md x = \left.F(x)\right|_a^b=F(x)\big|_a^b=F(x)\Big|_a^b=F(x)\bigg|_a^b
+  \int_a^b\! f(x)\dif x = \left.F(x)\right|_a^b=F(x)\big|_a^b=F(x)\Big|_a^b=F(x)\bigg|_a^b
 \end{equation*}
 
 复数实部和虚部的表示：$z=a+b\mi,\Re(z)=a,\Im(z)=b$。
@@ -121,7 +121,7 @@
 \subsection{其他符号}
 
 文本中的分式$\myfrac{1}{2}$，虚位\phantom{字}命令；
-$\ell \quad \nabla \quad 30^{\circ} $。
+$\ell \quad \increment x \quad \nabla \mbfnabla \quad 30^{\circ} $。
 
 \subsection{定理环境}
 
